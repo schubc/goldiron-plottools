@@ -2,14 +2,19 @@ package com.enteente.plottools.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import com.enteente.plottools.Plottools;
+import com.github.intellectualsites.plotsquared.plot.object.RunnableVal;
+import com.github.intellectualsites.plotsquared.plot.database.DBFunc;
 import com.github.intellectualsites.plotsquared.plot.object.Plot;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
+import com.github.intellectualsites.plotsquared.plot.util.UUIDHandler;
 
 public final class Utils {
 	public static int countPlots(Player player) {
@@ -19,9 +24,6 @@ public final class Utils {
         List<Plot> plist = new ArrayList<Plot>(plots);
         int plotCount=0;
         for(Plot p:plist) {
-        	player.sendMessage(p.toString());
-        	player.sendMessage(p.getWorldName());
-        	player.sendMessage(world);
         	if(p.getWorldName().equalsIgnoreCase(world)) {
         		plotCount++;
         	}
@@ -42,4 +44,17 @@ public final class Utils {
 		
 		return p;
 	}
+    public static void getPersistentMeta(UUID uuid, final String key,
+            final RunnableVal<byte[]> result) {
+            PlotPlayer player = UUIDHandler.getPlayer(uuid);
+            if (player != null) {
+                result.run(player.getPersistentMeta(key));
+            } else {
+                DBFunc.getPersistentMeta(uuid, new RunnableVal<Map<String, byte[]>>() {
+                    @Override public void run(Map<String, byte[]> value) {
+                        result.run(value.get(key));
+                    }
+            	});
+            }
+        }
 }

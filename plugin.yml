@@ -1,6 +1,6 @@
  main: com.enteente.plottools.Plottools
  name: plottools
- version: 0.0.1
+ version: 0.1
  author: schubc
  description: Change borders of plotsquared plots
  depend: [Vault, PlotSquared]
@@ -8,6 +8,6 @@
      plottools:
         description: plot tools
         usage: /plottools <info|buy>
-        aliases: [pt, ptools]
+        aliases: [ptools]
         permission: plots.use 	
         permission-message: You need basic plotborder permissions to use plottools
