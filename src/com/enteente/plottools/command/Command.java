@@ -2,7 +2,6 @@ package com.enteente.plottools.command;
 
 import org.bukkit.entity.Player;
 
-import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 
 public abstract class Command {
 	private Player player;

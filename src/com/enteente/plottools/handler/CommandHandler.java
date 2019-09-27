@@ -33,9 +33,10 @@ public class CommandHandler implements CommandExecutor {
             	return new InfoCommand(player).execute();
             case "buy":
             	return new BuyCommand(player).execute();
+            default:
+            	player.sendMessage("Benutzung: /pt <info|buy>");
+            	return false;
             }
-        	player.sendMessage("Benutzung: /pt <info|buy>");
-        	return false;
         }
 		
 		return false;

@@ -25,19 +25,22 @@ public class Plottools extends JavaPlugin {
 	@Override
     public void onEnable() {
 		instance = this;
-    	getCommand("plottools").setExecutor(new CommandHandler());
-    	
-    	config=new Configs(this.getInstance(), "config.yml", true);
     	
         if (!setupEconomy() ) {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
             return;
         }    	
+
+    	getCommand("plottools").setExecutor(new CommandHandler());
     	
+    	config=new Configs(this, "config.yml", true);
+
+        
     }
     @Override
     public void onDisable() {
+    	// Empty
     }
     
     public static Plottools getInstance() {

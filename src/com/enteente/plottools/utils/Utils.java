@@ -39,7 +39,7 @@ public final class Utils {
 		
 		double p=b*Math.pow(e, n);
 		if(r!=0) {
-			p=r*Math.round(p/r);
+			p=r*(double)Math.round(p/r);
 		}
 		
 		return p;

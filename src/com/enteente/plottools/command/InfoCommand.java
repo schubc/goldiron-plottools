@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 
 import com.enteente.plottools.Plottools;
 import com.enteente.plottools.utils.Utils;
-import com.github.intellectualsites.plotsquared.plot.config.Configuration;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 import com.github.intellectualsites.plotsquared.plot.object.RunnableVal;
 import com.github.intellectualsites.plotsquared.plot.util.ByteArrayUtilities;
@@ -25,12 +24,9 @@ public class InfoCommand extends Command {
 	public boolean execute(Player player, String[] args) {
 		PlotPlayer pp=PlotPlayer.wrap(player);
 		
-		//player.sendMessage("INFO");
 		int plotCount=Utils.countPlots(player);
-		//player.sendMessage(Integer.toString(plotCount));
 		
 		int maxPlots=pp.getAllowedPlots();
-		//player.sendMessage(Integer.toString(maxPlots));
 		final UUID uuid = pp.getUUID();
 		Utils.getPersistentMeta(uuid, "grantedPlots", new RunnableVal<byte[]>() {
             @Override public void run(byte[] array) {
@@ -60,7 +56,6 @@ public class InfoCommand extends Command {
                 player.sendMessage(String.format("Du hast genug Geld für %d weitere Grundstücke", n));
             }
         });
-        //return CompletableFuture.completedFuture(true);		
 		
 		return true;
 	}

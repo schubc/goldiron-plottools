@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 
 import com.enteente.plottools.Plottools;
 import com.enteente.plottools.utils.Utils;
-import com.github.intellectualsites.plotsquared.plot.config.Configuration;
 import com.github.intellectualsites.plotsquared.plot.database.DBFunc;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 import com.github.intellectualsites.plotsquared.plot.object.RunnableVal;
@@ -28,12 +27,9 @@ public class BuyCommand extends Command {
 	public boolean execute(Player player, String[] args) {
 		PlotPlayer pp=PlotPlayer.wrap(player);
 		
-		//player.sendMessage("INFO");
 		int plotCount=Utils.countPlots(player);
-		//player.sendMessage(Integer.toString(plotCount));
 		
 		int maxPlots=pp.getAllowedPlots();
-		//player.sendMessage(Integer.toString(maxPlots));
 		final UUID uuid = pp.getUUID();
 		Utils.getPersistentMeta(uuid, "grantedPlots", new RunnableVal<byte[]>() {
             @Override public void run(byte[] array) {
@@ -50,8 +46,6 @@ public class BuyCommand extends Command {
                 }
                 plots+=granted;
                 final double p=Utils.getPrice(plots);
-                
-                //final double balance=Plottools.getEconomy().getBalance(player);
                 
 
                 EconomyResponse response=Plottools.getEconomy().withdrawPlayer(player, p);
