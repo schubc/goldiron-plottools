@@ -33,7 +33,8 @@ public class Configs {
         this.plugin = plugin;
         this.filename = filename;
         this.subfolder = subfolder.length > 0 ? "plugins/" + plugin.getName() + "/" + subfolder[0] : "plugins/" + plugin.getName();
-        if (inPlugin = internalFile) {
+        inPlugin = internalFile;
+        if (inPlugin) {
             saveInternalFile(filename, this.subfolder);
         }
         get().options().copyDefaults(true);
