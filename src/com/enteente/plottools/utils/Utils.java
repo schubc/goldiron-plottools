@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import com.enteente.plottools.Plottools;
@@ -33,9 +32,9 @@ public final class Utils {
 	}
 	public static double getPrice(int n) {
 
-		double b=Plottools.getInstance().getConfig().getDouble("baseprice");
-		double e=Plottools.getInstance().getConfig().getDouble("exponent");
-		int r=Plottools.getInstance().getConfig().getInt("round");
+		double b=Plottools.getInstance().getConfigs().get().getDouble("baseprice");
+		double e=Plottools.getInstance().getConfigs().get().getDouble("exponent");
+		int r=Plottools.getInstance().getConfigs().get().getInt("round");
 		
 		double p=b*Math.pow(e, n);
 		if(r!=0) {

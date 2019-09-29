@@ -15,10 +15,11 @@ public class Plottools extends JavaPlugin {
 
 	private static Plottools instance;
     private String packet = Bukkit.getServer().getClass().getPackage().getName();
-    private String version = packet.substring(packet.lastIndexOf('.') + 1);	
+    @SuppressWarnings("unused")
+	private String version = packet.substring(packet.lastIndexOf('.') + 1);	
 	
-    private Configs config;
-    private static Economy econ = null;
+    private Configs config = null;
+    private Economy econ = null;
 
     private static final Logger log = Logger.getLogger("Minecraft");
     
@@ -47,9 +48,14 @@ public class Plottools extends JavaPlugin {
         return instance;
     }
     
-    public static Economy getEconomy() {
+    public Economy getEconomy() {
         return econ;
     }
+
+    public Configs getConfigs() {
+        return config;
+    }   
+    
     private boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;

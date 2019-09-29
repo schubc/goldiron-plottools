@@ -48,7 +48,7 @@ public class BuyCommand extends Command {
                 final double p=Utils.getPrice(plots);
                 
 
-                EconomyResponse response=Plottools.getEconomy().withdrawPlayer(player, p);
+                EconomyResponse response=Plottools.getInstance().getEconomy().withdrawPlayer(player, p);
 
                 
                 if(response.type==EconomyResponse.ResponseType.SUCCESS) {
