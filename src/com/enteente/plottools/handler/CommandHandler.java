@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.enteente.plottools.command.BuyCommand;
+import com.enteente.plottools.command.FlagsCommand;
 import com.enteente.plottools.command.InfoCommand;
 
 public class CommandHandler implements CommandExecutor {
@@ -33,6 +34,8 @@ public class CommandHandler implements CommandExecutor {
             	return new InfoCommand(player).execute();
             case "buy":
             	return new BuyCommand(player).execute();
+            case "flags":
+            	return new FlagsCommand(player).execute();
             default:
             	player.sendMessage("Benutzung: /pt <info|buy>");
             	return false;

@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 
 public abstract class Command {
-	private Player player;
+	protected Player player;
 	public Command() {
 		this.player=null;
 	}

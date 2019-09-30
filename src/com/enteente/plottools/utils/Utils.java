@@ -6,13 +6,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import com.enteente.plottools.Plottools;
 import com.github.intellectualsites.plotsquared.plot.object.RunnableVal;
 import com.github.intellectualsites.plotsquared.plot.database.DBFunc;
+import com.github.intellectualsites.plotsquared.plot.object.Location;
 import com.github.intellectualsites.plotsquared.plot.object.Plot;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
+import com.github.intellectualsites.plotsquared.plot.util.MathMan;
 import com.github.intellectualsites.plotsquared.plot.util.UUIDHandler;
 
 public final class Utils {
@@ -56,4 +59,12 @@ public final class Utils {
             	});
             }
         }
+    
+    public static Location getLocationFull(final Entity entity) {
+        final org.bukkit.Location location = entity.getLocation();
+        return new Location(location.getWorld().getName(), MathMan.roundInt(location.getX()),
+            MathMan.roundInt(location.getY()), MathMan.roundInt(location.getZ()), location.getYaw(),
+            location.getPitch());
+    }
+    
 }

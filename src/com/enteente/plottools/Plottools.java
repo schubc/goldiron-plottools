@@ -1,11 +1,13 @@
 package com.enteente.plottools;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.enteente.plottools.handler.CommandHandler;
 import com.enteente.plottools.utils.Configs;
+import com.enteente.plottools.utils.MenuEntry;
 
 import net.milkbowl.vault.economy.Economy;
 
@@ -19,6 +21,7 @@ public class Plottools extends JavaPlugin {
 	private String version = packet.substring(packet.lastIndexOf('.') + 1);	
 	
     private Configs config = null;
+    private Configs flagsconfig = null;
     private Economy econ = null;
 
     private static final Logger log = Logger.getLogger("Minecraft");
@@ -36,6 +39,8 @@ public class Plottools extends JavaPlugin {
     	getCommand("plottools").setExecutor(new CommandHandler());
     	
     	config=new Configs(this, "config.yml", true);
+    	flagsconfig=new Configs(this, "flags.yml", true);
+    	ConfigurationSerialization.registerClass(MenuEntry.class);
 
         
     }
@@ -55,7 +60,9 @@ public class Plottools extends JavaPlugin {
     public Configs getConfigs() {
         return config;
     }   
-    
+    public Configs getFlagsConfigs() {
+        return flagsconfig;
+    }
     private boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
