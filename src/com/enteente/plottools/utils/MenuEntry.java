@@ -7,13 +7,14 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 public class MenuEntry implements ConfigurationSerializable {
 
-	public String id;
-	public String name;
-	public String flag;
-	public String material;
-	public String permission;
-	public String type;
-
+	public final String id;
+	public final String name;
+	public final String flag;
+	public final String material;
+	public final String permission;
+	public final String type;
+	private String value;
+	
 	@Override
 	public Map<String, Object> serialize() {
 		
@@ -28,6 +29,13 @@ public class MenuEntry implements ConfigurationSerializable {
 		return serialized;
 	}
 
+	public void setValue(String value) {
+		this.value=value;
+	}
+	
+	public String getValue() {
+		return value;
+	}
 	
 	public static MenuEntry deserialize(final Map<String, String> map) {
 		return new MenuEntry(

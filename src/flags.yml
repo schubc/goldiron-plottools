@@ -4,20 +4,20 @@ flags:
      name: Flugmodus
      material: elytra
      permission: plots.use
-     type: Booleann
+     type: Boolean
    - id: explosion
      name: Explosionen
      material: tnt
      permission: plots.use
-     type: Booleann
-   - id: device interact
+     type: Boolean
+   - id: device-interact
      name: Druckplatten aktivieren
      material: stone_pressure_plate
      permission: plots.use
-     type: Booleann
+     type: Boolean
    - id: instabreak
      name: Instabreak
      material: diamond_pickaxe
      permission: plots.admin
-     type: Booleann
+     type: Boolean
       
