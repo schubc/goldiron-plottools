@@ -106,7 +106,7 @@ public class FlagsCommand extends Command {
 			
 			boolean result = false;
 			if(flag.isSet(plot) && ((BooleanFlag)flag).isTrue(plot)) {
-				result=plot.removeFlag(flag);
+				result=plot.setFlag(flag, flag.parseValue("false"));
 			} else {
 				result=plot.setFlag(flag, flag.parseValue("true"));
 			}
