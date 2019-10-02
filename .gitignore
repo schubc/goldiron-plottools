@@ -40,3 +40,5 @@ buildNumber.properties
 .settings
 .externalToolBuilders
 bin/*
+.classpath
+.settings/
