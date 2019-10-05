@@ -74,7 +74,11 @@ public class FlagsCommand extends Command {
 					if(flag.isSet(plot) && ((BooleanFlag)flag).isTrue(plot)) {
 						e.setValue("AN");
 					} else {
-						e.setValue("AUS");
+						//e.setValue("AUS");
+						plot.removeFlag(flag);
+						if(e.id.equals("fly")) {
+							Utils.fixFlight(plot);
+						}
 					}
 					mainMenu.add(e);
 					continue;
@@ -111,7 +115,7 @@ public class FlagsCommand extends Command {
 				result=plot.setFlag(flag, flag.parseValue("true"));
 			}
 			if(result) {
-				player.sendMessage(e.name+" wurde erfolgreich geändert");
+				player.sendMessage(e.name+" wurde erfolgreich geï¿½ndert");
 			} else {
 				player.sendMessage("leider ist ein Fehler aufgetreten");
 			}

@@ -16,6 +16,7 @@ import com.github.intellectualsites.plotsquared.plot.object.Location;
 import com.github.intellectualsites.plotsquared.plot.object.Plot;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 import com.github.intellectualsites.plotsquared.plot.util.MathMan;
+import com.github.intellectualsites.plotsquared.plot.util.PlotGameMode;
 import com.github.intellectualsites.plotsquared.plot.util.UUIDHandler;
 
 public final class Utils {
@@ -65,6 +66,19 @@ public final class Utils {
         return new Location(location.getWorld().getName(), MathMan.roundInt(location.getX()),
             MathMan.roundInt(location.getY()), MathMan.roundInt(location.getZ()), location.getYaw(),
             location.getPitch());
+    }
+    
+    public static void fixFlight(Plot origin) {
+        for (Plot plot : origin.getConnectedPlots()) {
+            for (PlotPlayer pp : plot.getPlayersInPlot()) {
+                boolean flight = pp.getFlight();
+                PlotGameMode gamemode = pp.getGameMode();
+                if(gamemode != PlotGameMode.CREATIVE && gamemode == PlotGameMode.SPECTATOR) {
+                	pp.setFlight(false);
+                }
+
+            }
+        }    	
     }
     
 }
