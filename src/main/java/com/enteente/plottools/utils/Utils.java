@@ -73,7 +73,7 @@ public final class Utils {
             for (PlotPlayer pp : plot.getPlayersInPlot()) {
                 boolean flight = pp.getFlight();
                 PlotGameMode gamemode = pp.getGameMode();
-                if(gamemode != PlotGameMode.CREATIVE && gamemode == PlotGameMode.SPECTATOR) {
+                if(gamemode != PlotGameMode.CREATIVE && gamemode != PlotGameMode.SPECTATOR) {
                 	pp.setFlight(false);
                 }
 

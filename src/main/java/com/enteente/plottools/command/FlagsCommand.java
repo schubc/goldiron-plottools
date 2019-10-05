@@ -59,6 +59,7 @@ public class FlagsCommand extends Command {
 		
 		FileConfiguration flagsconfig=Plottools.getInstance().getFlagsConfigs().get();
 		List<?> items=flagsconfig.getList("flags");
+		
 		for(Object item:items) {
 			MenuEntry e=MenuEntry.deserialize((Map<String,String>)item);
 			
@@ -74,17 +75,12 @@ public class FlagsCommand extends Command {
 					if(flag.isSet(plot) && ((BooleanFlag)flag).isTrue(plot)) {
 						e.setValue("AN");
 					} else {
-						//e.setValue("AUS");
-						plot.removeFlag(flag);
-						if(e.id.equals("fly")) {
-							Utils.fixFlight(plot);
-						}
+						e.setValue("AUS");
 					}
 					mainMenu.add(e);
 					continue;
 				}
 				player.sendMessage("Unsupported: " + e.type);
-				
 				
 			}
 			
@@ -110,12 +106,18 @@ public class FlagsCommand extends Command {
 			
 			boolean result = false;
 			if(flag.isSet(plot) && ((BooleanFlag)flag).isTrue(plot)) {
-				result=plot.setFlag(flag, flag.parseValue("false"));
+				//result=plot.setFlag(flag, flag.parseValue("false"));
+				result=plot.removeFlag(flag);
+				if(e.id.equals("fly")) {
+					Utils.fixFlight(plot);
+				}
+				
+				
 			} else {
 				result=plot.setFlag(flag, flag.parseValue("true"));
 			}
 			if(result) {
-				player.sendMessage(e.name+" wurde erfolgreich ge�ndert");
+				player.sendMessage(e.name+" wurde erfolgreich geändert");
 			} else {
 				player.sendMessage("leider ist ein Fehler aufgetreten");
 			}

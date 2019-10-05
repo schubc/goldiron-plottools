@@ -51,9 +51,9 @@ public class InfoCommand extends Command {
                 	b-=Utils.getPrice(plots+n);
                 	n++;
                 }
-                player.sendMessage(String.format("Du hast %d Grundstücke und %d Grundstückstickets", plotCount, granted));
-                player.sendMessage(String.format("Das nächste Grundstück kostet %.02f Goldies", p));
-                player.sendMessage(String.format("Du hast genug Geld für %d weitere Grundstücke", n));
+                player.sendMessage(String.format("Du hast %d GrundstÃ¼cke und %d GrundstÃ¼ckstickets", plotCount, granted));
+                player.sendMessage(String.format("Das nÃ¤chste GrundstÃ¼ck kostet %.02f Goldies", p));
+                player.sendMessage(String.format("Du hast genug Geld fÃ¼r %d weitere GrundstÃ¼cke", n));
             }
         });
 		
