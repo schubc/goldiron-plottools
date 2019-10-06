@@ -81,17 +81,12 @@ public class Configs {
             Files.createParentDirs(outFile);
             if (!outFile.exists()) {
                 InputStream fileInputStream = Plottools.getInstance().getResource(filename);
-                FileOutputStream fileOutputStream=null;
-                try {
-                    fileOutputStream = new FileOutputStream(outFile);
+                try (FileOutputStream fileOutputStream=new FileOutputStream(outFile)){
                     fileOutputStream.getChannel().transferFrom(Channels.newChannel(fileInputStream), 0, Integer.MAX_VALUE);
-                	
-                } finally {
-                    if(fileOutputStream!=null) {
-                    	fileOutputStream.close();
-                    }
-                    fileInputStream.close();
-                	
+                	fileOutputStream.close();
+                } catch (IOException e) {
+                    Bukkit.getLogger().log(Level.WARNING, "Failed to create File " + filename, e);
+                    return null;
                 }
             }
             return outFile;
