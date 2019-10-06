@@ -7,7 +7,7 @@
  commands:
      plottools:
         description: plot tools
-        usage: /plottools <info|buy>
+        usage: /plottools <info|buy|flags>
         aliases: [ptools]
         permission: plots.use 	
         permission-message: You need basic plotborder permissions to use plottools

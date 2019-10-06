@@ -10,17 +10,19 @@ import com.enteente.plottools.command.FlagsCommand;
 import com.enteente.plottools.command.InfoCommand;
 
 public class CommandHandler implements CommandExecutor {
+	private final String usage="Benutzung: /pt <info|buy|flags>";
+	
 	public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         if(commandSender instanceof Player) {
             Player player = (Player) commandSender;
             
             if(args.length == 0) {
         		// TODO: open GUI
-            	player.sendMessage("Benutzung: /pt <info|buy>");
+            	player.sendMessage(usage);
         		return false;
         	}            
             if(args.length > 1) {
-            	player.sendMessage("Benutzung: /pt <info|buy>");
+            	player.sendMessage(usage);
         		return false;
             }
             String subcommand=args[0];
@@ -37,7 +39,7 @@ public class CommandHandler implements CommandExecutor {
             case "flags":
             	return new FlagsCommand(player).execute();
             default:
-            	player.sendMessage("Benutzung: /pt <info|buy>");
+            	player.sendMessage(usage);
             	return false;
             }
         }
