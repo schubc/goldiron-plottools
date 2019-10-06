@@ -1,6 +1,6 @@
  main: com.enteente.plottools.Plottools
  name: plottools
- version: 1.0.RC2
+ version: 1.0
  author: schubc
  description: Change borders of plotsquared plots
  depend: [Vault, PlotSquared]
