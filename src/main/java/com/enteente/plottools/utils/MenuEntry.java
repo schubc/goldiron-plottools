@@ -18,7 +18,7 @@ public class MenuEntry implements ConfigurationSerializable {
 	@Override
 	public Map<String, Object> serialize() {
 		
-		Map<String, Object> serialized=new HashMap<String,Object>();
+		Map<String, Object> serialized=new HashMap<>();
 		serialized.put("id", id);
 		serialized.put("name", name);
 		serialized.put("flag", flag);
@@ -46,8 +46,6 @@ public class MenuEntry implements ConfigurationSerializable {
 				map.get("type"),
 				map.get("permission")
 				);
-		
-		//return null;
 	}
 	
 	public MenuEntry(String id, String name, String flag, String material, String type, String permission) {

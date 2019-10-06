@@ -49,30 +49,22 @@ public class BuyCommand extends Command {
                 
 
                 EconomyResponse response=Plottools.getInstance().getEconomy().withdrawPlayer(player, p);
-
                 
-                if(response.type==EconomyResponse.ResponseType.SUCCESS) {
-
-                    int amount;
-                    if (array == null) {
-                        amount = 1;
-                    } else {
-                        amount = 1 + ByteArrayUtilities.bytesToInteger(array);
-                    }
-                    boolean replace = array != null;
-                    String key = "grantedPlots";
-                    byte[] rawData = ByteArrayUtilities.integerToBytes(amount);
-                    PlotPlayer online = UUIDHandler.getPlayer(uuid);
-                    if (online != null) {
-                        online.setPersistentMeta(key, rawData);
-                    } else {
-                        DBFunc.addPersistentMeta(uuid, key, rawData, replace);
-                    }
-                    player.sendMessage("Du hast ein Plotticket gekauft!");
-                	
-                } else {
+                if(response.type != EconomyResponse.ResponseType.SUCCESS) {
                 	player.sendMessage("Du hast nicht genug Geld!");
+                	return;
                 }
+                    
+                boolean replace = array != null;
+                String key = "grantedPlots";
+                byte[] rawData = ByteArrayUtilities.integerToBytes(granted+1);
+                PlotPlayer online = UUIDHandler.getPlayer(uuid);
+                if (online != null) {
+                    online.setPersistentMeta(key, rawData);
+                } else {
+                    DBFunc.addPersistentMeta(uuid, key, rawData, replace);
+                }
+                player.sendMessage("Du hast ein Plotticket gekauft!");
                 
             }
 		});
